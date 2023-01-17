@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "electron": "electron .",
-    "update:packages": "node wipe-dependencies.js && rm -rf node_modules &&npm update --save-dev && npm update --save"
+    "electron": "electron ."
   },
   "author": "Rallycoding",
   "devDependencies": {
