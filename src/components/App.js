@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, } from "react-router-dom";
 
 import Header from "./Header";
 import TasksIndex from "./TasksIndex";
@@ -55,7 +55,7 @@ class App extends Component {
 
   };
 
-  // -------- end of electron event handerls ----------
+  // -------- end of electron event handlers ----------
 
   componentDidMount() {
     this.initializeTimer();
