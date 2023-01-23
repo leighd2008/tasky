@@ -12,6 +12,7 @@ fs.readdirSync('node_modules')
   });
 
 module.exports = {
+  mode: 'development',
   externals: nodeModules,
   entry: [
     './src/index.js'
@@ -23,13 +24,10 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
-        }
       },
     ]
   },
@@ -38,7 +36,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
+    static: './',
     port: 4172
   }
 };

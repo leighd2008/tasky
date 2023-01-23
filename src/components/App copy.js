@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Switch, } from "react-router-dom";
+import { Route, Switch, } from "react-router-dom";
 
 import Header from "./Header";
 import TasksIndex from "./TasksIndex";
@@ -173,45 +173,43 @@ class App extends Component {
       <div>
         <Header />
         <div className="container" style={styles.container}>
-          {/* <Switch> */}
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <TasksIndex
-                    activeTask={activeTask}
-                    onTaskDeactivate={this.handleDeactivation}
-                    onTimerStart={this.handleTimerStart}
-                    onTimerStop={this.handleTimerStop}
-                    timer={timer}
-                  />
-                }
-              />
-              <Route
-                path="/tasks"
-                element={
-                  <TasksShow
-                    tasks={tasks}
-                    activeTask={activeTask}
-                    createTask={this.createTask}
-                    deleteTask={this.deleteTask}
-                    onTaskActivate={this.handleActivation}
-                  />
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <Settings
-                    timer={timer}
-                    handleSubmit={this.handleSettingsUpdate}
-                    handleDataReset={this.handleDataReset}
-                  />
-                }
-              />
-            </Routes>
-          {/* </Switch> */}
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <TasksIndex
+                  activeTask={activeTask}
+                  onTaskDeactivate={this.handleDeactivation}
+                  onTimerStart={this.handleTimerStart}
+                  onTimerStop={this.handleTimerStop}
+                  timer={timer}
+                />
+              )}
+            />
+            <Route
+              path="/tasks"
+              render={() => (
+                <TasksShow
+                  tasks={tasks}
+                  activeTask={activeTask}
+                  createTask={this.createTask}
+                  deleteTask={this.deleteTask}
+                  onTaskActivate={this.handleActivation}
+                />
+              )}
+            />
+            <Route
+              path="/settings"
+              render={() => (
+                <Settings
+                  timer={timer}
+                  handleSubmit={this.handleSettingsUpdate}
+                  handleDataReset={this.handleDataReset}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );
