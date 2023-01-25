@@ -16,9 +16,10 @@ process.platform === 'linux' ? trayMenu = Menu.buildFromTemplate([
         
         //  Window height and width
         const { height, width } = mainWindow.getBounds();
+        const yPosition = y;
         mainWindow.setBounds({
           x: x -width / 2,
-          y: y,
+          y: yPosition,
           height: height,
           width: width,
         })
@@ -62,7 +63,7 @@ app.on('ready', () => {
       if (mainWindow.isVisible()) {
         mainWindow.hide();
       } else {
-        const yPosition = process.platform === 'darwin' ? y : y - height;
+        const yPosition = process.platform === 'win32' ? y - height : y;
         mainWindow.setBounds({
           x: x -width / 2,
           y: yPosition,
