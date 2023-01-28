@@ -57,10 +57,9 @@ class TimerTray extends Tray {
           const { x, y} = electron.screen.getCursorScreenPoint()
           
           //  Window height and width
-          const yPosition = y;
           mainWindow.setBounds({
             x: x -width / 2,
-            y: yPosition,
+            y: y,
             height: height,
             width: width,
           })

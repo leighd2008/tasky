@@ -7,6 +7,7 @@ const { app, BrowserWindow  } = electron;
 let mainWindow;
 
 app.on('ready', () => {
+  process.platform === 'darwin' ? app.dock.hide() : null;
   mainWindow = new BrowserWindow({
     height: 500,
     width: 300,
@@ -18,9 +19,11 @@ app.on('ready', () => {
       contextIsolation: false,
       // enableRemote needed for windows
       enableRemoteModule: true,
-      backgroundThrottling: false 
+      backgroundThrottling: false,
+      skipTaskBar: true 
 
     }
+    
   });
   mainWindow.loadURL(`file://${__dirname}/src/index.html`);
   mainWindow.on('blur', () => {
