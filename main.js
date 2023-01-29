@@ -1,6 +1,7 @@
 const path = require('path');
 const electron = require('electron');
-const TimerTray = require('./app/timer_tray')
+const TimerTray = require('./app/timer_tray');
+const MainWindow = require('./app/main_window');
 
 const { app, BrowserWindow  } = electron;
 
@@ -8,27 +9,8 @@ let mainWindow;
 
 app.on('ready', () => {
   process.platform === 'darwin' ? app.dock.hide() : null;
-  mainWindow = new BrowserWindow({
-    height: 500,
-    width: 300,
-    frame: false,
-    resizable: false,
-    show: false,
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      // enableRemote needed for windows
-      enableRemoteModule: true,
-      backgroundThrottling: false,
-      skipTaskBar: true 
-
-    }
-    
-  });
+  mainWindow = new MainWindow();
   mainWindow.loadURL(`file://${__dirname}/src/index.html`);
-  mainWindow.on('blur', () => {
-    mainWindow.hide();
-  });
   
 });
 
