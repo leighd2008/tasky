@@ -9,8 +9,7 @@ let mainWindow;
 
 app.on('ready', () => {
   process.platform === 'darwin' ? app.dock.hide() : null;
-  mainWindow = new MainWindow();
-  mainWindow.loadURL(`file://${__dirname}/src/index.html`);
+  mainWindow = new MainWindow(`file://${__dirname}/src/index.html`);
   
 });
 
